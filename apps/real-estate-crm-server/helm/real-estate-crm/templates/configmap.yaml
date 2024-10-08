@@ -1,0 +1,10 @@
+{{- if .Values.variables.configmap -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "real-estate-crm.fullname" . }}
+  labels:
+    {{- include "real-estate-crm.labels" . | nindent 4 }}
+data:
+  {{- toYaml .Values.variables.configmap | nindent 2}}
+{{- end }}
